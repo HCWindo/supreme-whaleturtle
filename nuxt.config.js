@@ -12,11 +12,22 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    link: [
+      { rel: 'stylesheet', href: 'https://use.typekit.net/xks4xif.css' }
+    ],
+    script: [
+      {
+        src: 'https://use.fontawesome.com/60392df943.js '
+      }
+    ],
+    script: [
+      { hid: 'script', src: 'assets/#', defer: true }
     ]
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [
+  css: ['@/assets/css/main',
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -35,8 +46,29 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
   ],
+  modules: [
+    'nuxt-fontawesome'
+  ],
+
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    buildModules: [
+      ['@nuxtjs/fontawesome', {
+        component: 'fa',
+        suffix: true,
+        proIcons: { // if you have bought the Pro packages
+          // list the icons you want to add, not listed icons will be tree-shaked
+          solid: [
+            'faHome',
+            'faHeart',
+            'faPhone',
+          ],
+          // include all icons. But dont do this.
+          regular: true
+        }
+      }]
+    ]
+  
   }
 }
